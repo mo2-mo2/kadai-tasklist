@@ -48,7 +48,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  # <<: *default <-- out to use PostgreSQL for Heroku
+  adapter: postgresql  #for Heroku
+  encoding: unicode  #for Heroku
+  pool: 5  #for Heroku
   database: tasklist_production
   username: tasklist
   password: <%= ENV['TASKLIST_DATABASE_PASSWORD'] %>
